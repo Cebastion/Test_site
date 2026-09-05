@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poseidon Era — Free Social Slot | Rivetnest | 19+</title>
+<meta name="description" content="Spin Poseidon Era free: a 5x3 slot played for virtual points only. No money, no prizes. Message us on WhatsApp any time. Players 19 and over.">
+<meta name="theme-color" content="#04121e">
+<link rel="icon" href="deep-assets/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#04121e;
+    --panel:#0a2237;
+    --panel-2:#0f2c46;
+    --line:rgba(159,196,214,.16);
+    --text:#eaf3f7;
+    --muted:#8fabc0;
+    --gold:#d9a441;
+    --gold-2:#f0c674;
+    --teal:#2ec4b6;
+    --danger:#e2694f;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 15% -10%, rgba(46,196,182,.10), transparent 60%),
+      radial-gradient(900px 700px at 100% 10%, rgba(217,164,65,.08), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:'Manrope',system-ui,sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{font-family:'Oswald',system-ui,sans-serif; letter-spacing:.2px; margin:0 0 .5em;}
+  a{color:var(--gold-2); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  button{font-family:inherit;}
+
+  /* ---------- age gate ---------- */
+  .gate{position:fixed; inset:0; background:rgba(2,9,16,.92); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:200; padding:20px;}
+  .gate.gate--gone{display:none;}
+  body.is-held{overflow:hidden;}
+  .gate__panel{background:var(--panel); border:1px solid var(--line); border-radius:20px; max-width:440px; padding:32px 28px; text-align:center;}
+  .gate__stamp{display:inline-flex; align-items:baseline; gap:2px; font-family:'Oswald'; font-weight:700; font-size:34px; color:var(--gold-2); border:2px solid var(--gold); border-radius:999px; padding:6px 22px; margin-bottom:16px;}
+  .gate__body{color:var(--muted); font-size:14.5px;}
+  .gate__buttons{display:flex; gap:10px; margin:20px 0 14px; flex-wrap:wrap;}
+  .gate__enter,.gate__leave{flex:1; min-width:150px; padding:13px 14px; border-radius:10px; border:1px solid transparent; font-weight:700; cursor:pointer; font-size:14.5px;}
+  .gate__enter{background:var(--gold); color:#241505;}
+  .gate__leave{background:transparent; border-color:var(--line); color:var(--text);}
+  .gate__small{font-size:12.5px; color:var(--muted);}
+  .gate__block{display:none; margin-top:14px; color:var(--danger); font-weight:700; font-size:13.5px;}
+  .gate__block--on{display:block;}
+
+  /* ---------- header ---------- */
+  header.top{position:sticky; top:0; z-index:100; background:rgba(4,18,30,.85); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top__row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:1080px; margin:0 auto;}
+  .top__mark{display:flex; align-items:center; gap:9px; font-family:'Oswald'; font-weight:700; font-size:19px; color:var(--text);}
+  .top__mark span{color:var(--gold-2);}
+  nav.top__nav{display:flex; align-items:center; gap:20px;}
+  nav.top__nav a{color:var(--muted); font-size:14.5px; font-weight:600;}
+  nav.top__nav a:hover{color:var(--text); text-decoration:none;}
+  .top__wa{display:flex; align-items:center; gap:8px; background:#25D366; color:#04210f; padding:9px 16px; border-radius:999px; font-weight:800; font-size:13.5px;}
+  .top__wa:hover{text-decoration:none; filter:brightness(1.05);}
+  .top__burger{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 30px; text-align:center;}
+  .hero__tag{display:inline-block; font-size:12.5px; font-weight:700; color:var(--teal); border:1px solid rgba(46,196,182,.4); padding:5px 14px; border-radius:999px; margin-bottom:16px;}
+  .hero h1{font-size:clamp(32px,5vw,52px); margin-bottom:10px;}
+  .hero p{color:var(--muted); max-width:560px; margin:0 auto; font-size:16px;}
+
+  /* ---------- disclaimer strip ---------- */
+  .strip{background:var(--panel-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .strip__row{display:flex; align-items:center; gap:14px; padding:12px 24px; max-width:1080px; margin:0 auto; flex-wrap:wrap;}
+  .strip__badge{background:var(--gold); color:#241505; font-weight:800; font-size:12px; padding:3px 9px; border-radius:6px;}
+  .strip__copy{flex:1; min-width:220px; font-size:13.5px; color:var(--muted);}
+  .strip__copy strong{color:var(--text);}
+
+  /* ---------- game ---------- */
+  .pit{padding:44px 0;}
+  .pit__grid{display:grid; grid-template-columns:1.5fr 1fr; gap:26px;}
+  @media (max-width:860px){ .pit__grid{grid-template-columns:1fr;} }
+
+  .stage{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:0 20px 50px rgba(0,0,0,.35);}
+  .reels{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; background:#02101c; border-radius:10px; padding:10px; border:1px solid var(--line);}
+  .reel{display:flex; flex-direction:column; gap:8px;}
+  .cell{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; background:#0c2740; border-radius:8px; font-size:30px; transition:transform .12s ease, box-shadow .12s ease;}
+  .cell.is-rolling{filter:blur(1px); opacity:.85;}
+  .cell.is-hit{box-shadow:0 0 0 2px var(--gold-2) inset, 0 0 18px rgba(240,198,116,.45); background:#173250;}
+
+  .hud{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:18px; flex-wrap:wrap;}
+  .meters{display:flex; gap:22px;}
+  .meter{text-align:left;}
+  .meter span{display:block; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
+  .meter strong{font-family:'Oswald'; font-size:22px;}
+  .controls{display:flex; align-items:center; gap:10px;}
+  .betbtn{width:38px; height:38px; border-radius:9px; border:1px solid var(--line); background:#0c2740; color:var(--text); font-size:19px; cursor:pointer;}
+  .spinbtn{background:linear-gradient(180deg,var(--gold-2),var(--gold)); color:#241505; border:none; padding:13px 30px; border-radius:11px; font-weight:800; font-size:15px; cursor:pointer; letter-spacing:.02em;}
+  .spinbtn:disabled{opacity:.55; cursor:default;}
+  .resetbtn{margin-top:14px; background:none; border:1px solid var(--line); color:var(--muted); padding:8px 12px; border-radius:8px; font-size:12.5px; cursor:pointer;}
+  .resetbtn:hover{color:var(--text); border-color:var(--muted);}
+  .msg{margin-top:14px; font-size:13.5px; color:var(--muted); min-height:20px;}
+  .msg.is-win{color:var(--teal); font-weight:700;}
+
+  .side{display:flex; flex-direction:column; gap:16px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px;}
+  .card h2{font-size:18px;}
+  .payrow{display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:10px; padding:7px 0; font-size:13.5px; border-top:1px solid var(--line);}
+  .payrow:first-of-type{border-top:none;}
+  .payrow em{font-style:normal; font-size:22px;}
+  .payrow span{color:var(--muted); font-variant-numeric:tabular-nums;}
+  .card--warn{border-color:rgba(226,105,79,.35);}
+  .card--warn p{font-size:13px; color:var(--muted);}
+
+  /* ---------- contact / whatsapp section ---------- */
+  .contact{padding:50px 0 60px;}
+  .contact__box{background:linear-gradient(135deg,#0c2c22,#0a2237); border:1px solid rgba(46,196,182,.3); border-radius:20px; padding:38px; text-align:center;}
+  .contact__box h2{font-size:26px;}
+  .contact__box p{color:var(--muted); max-width:480px; margin:0 auto 22px;}
+  .wa-buttons{display:flex; flex-wrap:wrap; justify-content:center; gap:12px;}
+  .wa-btn{display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#04210f; font-weight:800; padding:14px 24px; border-radius:12px; font-size:15px;}
+  .wa-btn:hover{text-decoration:none; filter:brightness(1.06);}
+  .wa-btn--ghost{background:transparent; border:1px solid var(--line); color:var(--text); font-weight:700;}
+  .wa-btn svg{width:20px; height:20px; flex:none;}
+  .contact__fine{margin-top:18px; font-size:12.5px; color:var(--muted);}
+  .contact__fine a{color:var(--muted); text-decoration:underline;}
+
+  /* floating whatsapp button */
+  .fab{position:fixed; right:20px; bottom:20px; z-index:90; display:flex; align-items:center; gap:10px; background:#25D366; color:#04210f; padding:13px 18px; border-radius:999px; font-weight:800; font-size:14px; box-shadow:0 10px 26px rgba(0,0,0,.4);}
+  .fab:hover{text-decoration:none; filter:brightness(1.05);}
+  .fab svg{width:22px; height:22px;}
+  @media (max-width:520px){ .fab span{display:none;} .fab{padding:14px;} }
+
+  /* ---------- responsible play ---------- */
+  .aware{padding:10px 0 50px;}
+  .aware__grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:760px){ .aware__grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .aware__grid{grid-template-columns:1fr;} }
+  .aware__item{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; font-size:13px; color:var(--muted);}
+  .aware__item strong{display:block; color:var(--text); margin-bottom:4px; font-size:13.5px;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line); padding:34px 0 40px;}
+  .foot__row{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  .foot__brand{max-width:280px; font-size:13px; color:var(--muted);}
+  .foot__brand .top__mark{margin-bottom:10px;}
+  .foot__links{display:flex; gap:40px; flex-wrap:wrap;}
+  .foot__col h3{font-size:12.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:10px;}
+  .foot__col a{display:block; font-size:13.5px; color:var(--text); margin-bottom:7px;}
+  .foot__base{margin-top:26px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+
+  .skip{position:absolute; left:-9999px;}
+  .skip:focus{left:12px; top:12px; background:var(--gold); color:#241505; padding:8px 12px; border-radius:8px; z-index:300;}
+</style>
+</head>
+<body class="is-held">
+
+<a href="#game" class="skip">Skip to game</a>
+
+<!-- ============ AGE GATE ============ -->
+<div class="gate" id="gate19" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate__panel">
+    <div class="gate__stamp">19<span>+</span></div>
+    <h2 id="gateTitle" style="font-size:20px;">Confirm your age to continue</h2>
+    <p class="gate__body">Rivetnest is a free social game platform. Poseidon Era runs on virtual points — there is nothing to deposit, nothing to pay and nothing to win. Entry is limited to visitors aged 19 and over.</p>
+    <div class="gate__buttons">
+      <button type="button" class="gate__enter" id="gateEnter">I am 19 or older</button>
+      <button type="button" class="gate__leave" id="gateLeave">I am under 19</button>
+    </div>
+    <p class="gate__small">Entering confirms you understand that points hold no monetary value and can never be exchanged for cash, goods or prizes.</p>
+    <p class="gate__block" id="gateBlock">Access is limited to players 19 and over. Please close this page.</p>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="top" id="top">
+  <div class="top__row">
+    <a class="top__mark" href="#top">Rivetnest <span>Poseidon Era</span></a>
+    <nav class="top__nav">
+      <a href="#game">Play</a>
+      <a href="#rules">Rules</a>
+      <a href="#responsible">Play responsibly</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="top__wa" id="waHeader" href="#" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.9 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.9-1 1.1-1.3.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO / MONEY DISCLAIMER STRIP ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero__tag">Free play · Points only · 19+</span>
+    <h1>Play Poseidon Era</h1>
+    <p>Five reels, three rows, five deep-sea symbols. Everything you win is a number in your browser — and if you'd rather talk to a person than read a paytable, WhatsApp is right there too.</p>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip__row">
+    <span class="strip__badge">19+</span>
+    <p class="strip__copy"><strong>This game is free and pays nothing.</strong> Poseidon Era awards virtual points only. You cannot deposit, purchase, win or withdraw money here, and points cannot be exchanged for cash, goods or prizes.</p>
+  </div>
+</div>
+
+<!-- ============ GAME ============ -->
+<section class="pit" id="game">
+  <div class="wrap pit__grid">
+    <div class="stage">
+      <div class="reels" id="reels">
+        <div class="reel" data-reel="0"><div class="cell">🦪</div><div class="cell">🦪</div><div class="cell">🦪</div></div>
+        <div class="reel" data-reel="1"><div class="cell">🦪</div><div class="cell">🦪</div><div class="cell">🦪</div></div>
+        <div class="reel" data-reel="2"><div class="cell">🦪</div><div class="cell">🦪</div><div class="cell">🦪</div></div>
+        <div class="reel" data-reel="3"><div class="cell">🦪</div><div class="cell">🦪</div><div class="cell">🦪</div></div>
+        <div class="reel" data-reel="4"><div class="cell">🦪</div><div class="cell">🦪</div><div class="cell">🦪</div></div>
+      </div>
+      <div class="hud">
+        <div class="meters">
+          <div class="meter"><span>Points</span><strong id="mPoints">5000</strong></div>
+          <div class="meter"><span>Bet</span><strong id="mBet">10</strong></div>
+          <div class="meter"><span>Last win</span><strong id="mWin">0</strong></div>
+        </div>
+        <div class="controls">
+          <button type="button" class="betbtn" id="betDown" aria-label="Lower the bet">&minus;</button>
+          <button type="button" class="spinbtn" id="btnSpin">Spin</button>
+          <button type="button" class="betbtn" id="betUp" aria-label="Raise the bet">+</button>
+        </div>
+      </div>
+      <button type="button" class="resetbtn" id="btnReset">Reset points to 5,000</button>
+      <p class="msg" id="pitMsg">Press spin. The stake leaves your balance, any line pays it back in points.</p>
+    </div>
+
+    <div class="side" id="rules">
+      <div class="card">
+        <h2>Paytable</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:-6px;">Values for a 10 point stake, scaled with your bet. 3+ matching symbols from the left reel.</p>
+        <div class="payrow"><em>🔱</em><strong>Trident</strong><span>1200 / 250 / 60</span></div>
+        <div class="payrow"><em>👑</em><strong>Sea Crown</strong><span>600 / 150 / 40</span></div>
+        <div class="payrow"><em>👁️</em><strong>Kraken Eye</strong><span>300 / 80 / 25</span></div>
+        <div class="payrow"><em>🐚</em><strong>Golden Conch</strong><span>160 / 50 / 15</span></div>
+        <div class="payrow"><em>🦪</em><strong>Pearl Shell</strong><span>80 / 25 / 8</span></div>
+        <p style="margin-top:12px;font-size:13px;color:var(--muted);">Five paylines: the three straight rows, plus a V and an inverted V across all five reels.</p>
+      </div>
+      <div class="card card--warn">
+        <h2>19+ and nothing to win</h2>
+        <p>Access is limited to players aged 19 and over. Points hold no monetary value, cannot be exchanged, and vanish when you clear your browser data. Success here says nothing about real-money gambling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / WHATSAPP ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact__box">
+      <h2>Questions? Message us on WhatsApp</h2>
+      <p>No forms, no ticket numbers — write to us directly and we'll reply the same way. Weekdays get the fastest answers.</p>
+      <div class="wa-buttons">
+        <a class="wa-btn" id="waMain" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.9 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.9-1 1.1-1.3.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a class="wa-btn wa-btn--ghost" id="waSupport" href="#" target="_blank" rel="noopener noreferrer">
+          Ask about my points balance
+        </a>
+      </div>
+      <p class="contact__fine">Prefer email or phone? <a href="mailto:support@rivetnest.com">support@rivetnest.com</a> · <a href="tel:+15147486421">+1 514 748 6421</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAY RESPONSIBLY ============ -->
+<section class="aware" id="responsible">
+  <div class="wrap">
+    <h2 style="font-size:20px;">Gambling awareness — the short version</h2>
+    <div class="aware__grid">
+      <div class="aware__item"><strong>No money, ever.</strong>Nothing here can be bought or cashed out.</div>
+      <div class="aware__item"><strong>Points are not prizes.</strong>A balance is a number in your browser only.</div>
+      <div class="aware__item"><strong>19+ only.</strong>If you are under 19, leave this page.</div>
+      <div class="aware__item"><strong>Play for the fun of it.</strong>The reels are a pastime, not an income or a strategy.</div>
+      <div class="aware__item"><strong>Watch the clock.</strong>Set a time, take breaks, close the tab when it stops being fun.</div>
+      <div class="aware__item"><strong>Free games can still pull.</strong>If it feels compulsive, step away and reach out to a support service in your province.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot__row">
+    <div class="foot__brand">
+      <div class="top__mark">Rivetnest <span>Poseidon Era</span></div>
+      <p>A free social game platform built around one deep-sea slot. Points only, 19 and over. There is no real money anywhere on this page.</p>
+    </div>
+    <div class="foot__links">
+      <div class="foot__col">
+        <h3>Platform</h3>
+        <a href="about-rivetnest.html">About Rivetnest</a>
+        <a href="game-rules.html">Full Game Rules</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="foot__col">
+        <h3>Legal</h3>
+        <a href="responsibly-game.html">Play Responsibly</a>
+        <a href="privacy-statement.html">Privacy Policy</a>
+        <a href="usage-terms.html">Terms and Conditions</a>
+        <a href="cookies.html">Cookies Policy</a>
+      </div>
+      <div class="foot__col">
+        <h3>Reach us</h3>
+        <a href="https://wa.me/380965576269" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="mailto:support@rivetnest.com">support@rivetnest.com</a>
+        <a href="tel:+15147486421">+1 514 748 6421</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    &copy; 2026 Rivetnest. Free social game platform. Poseidon Era is played for virtual points with no monetary value. Success in a social game does not imply future success at real money gambling. 19+.
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<a class="fab" id="waFab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.9 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.9-1 1.1-1.3.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  /* ---------- WhatsApp links (edit the number in ONE place) ---------- */
+  var WA_NUMBER = "380965576269"; // no + no spaces, country code first
+  var msgGeneral = encodeURIComponent("Hi! I have a question about Poseidon Era on Rivetnest.");
+  var msgBalance = encodeURIComponent("Hi! I have a question about my points balance on Poseidon Era.");
+  var linkGeneral = "https://wa.me/" + WA_NUMBER + "?text=" + msgGeneral;
+  var linkBalance = "https://wa.me/" + WA_NUMBER + "?text=" + msgBalance;
+  ["waHeader","waMain","waFab"].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.href = linkGeneral;
+  });
+  var waSupport = document.getElementById("waSupport");
+  if (waSupport) waSupport.href = linkBalance;
+
+  /* ---------- storage helpers ---------- */
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  };
+
+  /* ---------- age gate ---------- */
+  var gate = document.getElementById('gate19');
+  var enter = document.getElementById('gateEnter');
+  var leave = document.getElementById('gateLeave');
+  var blocked = document.getElementById('gateBlock');
+  function openSite(){
+    document.body.classList.remove('is-held');
+    if (gate && gate.parentNode) gate.parentNode.removeChild(gate);
+  }
+  if (store.get('rvn_age') === 'ok') {
+    openSite();
+  }
+  if (enter) enter.addEventListener('click', function(){
+    store.set('rvn_age','ok');
+    gate.classList.add('gate--gone');
+    setTimeout(openSite, 150);
+  });
+  if (leave) leave.addEventListener('click', function(){
+    blocked.classList.add('gate__block--on');
+    leave.disabled = true;
+    enter.disabled = true;
+  });
+
+  /* ---------- sticky header shadow ---------- */
+  var head = document.getElementById('top');
+  window.addEventListener('scroll', function(){
+    if (window.pageYOffset > 30) head.style.boxShadow = '0 8px 24px rgba(0,0,0,.3)';
+    else head.style.boxShadow = 'none';
+  });
+
+  /* ---------- the game (same logic/keys as the rest of the site) ---------- */
+  var SYMS = [
+    { id:"trident", icon:"🔱", name:"Trident",     weight:2, pay:{ 3:60, 4:250, 5:1200 } },
+    { id:"crown",   icon:"👑", name:"Sea Crown",   weight:3, pay:{ 3:40, 4:150, 5:600 } },
+    { id:"kraken",  icon:"👁️", name:"Kraken Eye",  weight:4, pay:{ 3:25, 4:80,  5:300 } },
+    { id:"conch",   icon:"🐚", name:"Golden Conch",weight:6, pay:{ 3:15, 4:50,  5:160 } },
+    { id:"pearl",   icon:"🦪", name:"Pearl Shell", weight:8, pay:{ 3:8,  4:25,  5:80  } }
+  ];
+  var LINES = [[0,0,0,0,0],[1,1,1,1,1],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2]];
+  var BETS = [10,25,50,100];
+  var START = 5000;
+  var ROLL_TICK = 70;
+  var FIRST_STOP = 600;
+  var REEL_GAP = 230;
+
+  var bag = [];
+  SYMS.forEach(function(s){ for (var i=0;i<s.weight;i++) bag.push(s); });
+  function draw(){ return bag[Math.floor(Math.random()*bag.length)]; }
+
+  function read(key, fallback){
+    try { var v = localStorage.getItem(key); return v === null ? fallback : parseInt(v,10); }
+    catch(e){ return fallback; }
+  }
+  function write(key, val){ try { localStorage.setItem(key, String(val)); } catch(e){} }
+
+  var points = read("rvn_points", START);
+  var bet = read("rvn_bet", 10);
+  if (BETS.indexOf(bet) === -1) bet = 10;
+  if (isNaN(points) || points < 0) points = START;
+
+  var reelEls = [].slice.call(document.querySelectorAll(".reel"));
+  var cells = reelEls.map(function(r){ return [].slice.call(r.querySelectorAll(".cell")); });
+  var elPoints = document.getElementById("mPoints");
+  var elBet = document.getElementById("mBet");
+  var elWin = document.getElementById("mWin");
+  var elMsg = document.getElementById("pitMsg");
+  var btnSpin = document.getElementById("btnSpin");
+  var btnUp = document.getElementById("betUp");
+  var btnDown = document.getElementById("betDown");
+  var btnReset = document.getElementById("btnReset");
+  var busy = false;
+
+  function paint(){
+    elPoints.textContent = points.toLocaleString("en-CA");
+    elBet.textContent = bet;
+  }
+  function say(text, win){
+    elMsg.textContent = text;
+    elMsg.classList.toggle("is-win", !!win);
+  }
+  function place(reel, list, rolling){
+    for (var row=0; row<3; row++){
+      var cell = cells[reel][row];
+      cell.textContent = list[row].icon;
+      cell.setAttribute("data-sym", list[row].id);
+      cell.classList.toggle("is-rolling", !!rolling);
+    }
+  }
+  function clearHits(){
+    cells.forEach(function(col){ col.forEach(function(c){ c.classList.remove("is-hit"); }); });
+  }
+
+  function score(grid){
+    var total = 0, names = [];
+    LINES.forEach(function(line){
+      var first = grid[0][line[0]];
+      var run = 1;
+      for (var r=1; r<5; r++){
+        if (grid[r][line[r]].id === first.id) run++; else break;
+      }
+      if (run < 3) return;
+      var win = Math.round(first.pay[run] * bet / 10);
+      total += win;
+      names.push(first.name + " x" + run);
+      for (var k=0; k<run; k++) cells[k][line[k]].classList.add("is-hit");
+    });
+    return { total: total, names: names };
+  }
+
+  function spin(){
+    if (busy) return;
+    if (points < bet){
+      say("Not enough points for that stake. Lower the bet or reset the balance — both are free.", false);
+      return;
+    }
+    busy = true;
+    btnSpin.disabled = true;
+    clearHits();
+    elWin.textContent = "0";
+    say("Spinning...", false);
+    points -= bet;
+    write("rvn_points", points);
+    paint();
+
+    var grid = [];
+    for (var r=0; r<5; r++) grid.push([draw(), draw(), draw()]);
+
+    reelEls.forEach(function(el, i){
+      var roll = setInterval(function(){ place(i, [draw(), draw(), draw()], true); }, ROLL_TICK);
+      setTimeout(function(){
+        clearInterval(roll);
+        place(i, grid[i], false);
+        if (i === 4) settle(grid);
+      }, FIRST_STOP + i * REEL_GAP);
+    });
+  }
+
+  function settle(grid){
+    var outcome = score(grid);
+    if (outcome.total > 0){
+      points += outcome.total;
+      write("rvn_points", points);
+      elWin.textContent = outcome.total.toLocaleString("en-CA");
+      say(outcome.names.join(", ") + " — " + outcome.total.toLocaleString("en-CA") + " points added", true);
+    } else {
+      say("No line this time. Points only, nothing lost.", false);
+    }
+    paint();
+    busy = false;
+    btnSpin.disabled = false;
+  }
+
+  btnSpin.addEventListener("click", spin);
+  btnUp.addEventListener("click", function(){
+    var i = BETS.indexOf(bet);
+    if (i < BETS.length - 1){ bet = BETS[i+1]; write("rvn_bet", bet); paint(); }
+  });
+  btnDown.addEventListener("click", function(){
+    var i = BETS.indexOf(bet);
+    if (i > 0){ bet = BETS[i-1]; write("rvn_bet", bet); paint(); }
+  });
+  btnReset.addEventListener("click", function(){
+    points = START;
+    write("rvn_points", points);
+    clearHits();
+    elWin.textContent = "0";
+    paint();
+    say("Balance back to 5,000 points. It costs nothing, it is worth nothing.", false);
+  });
+
+  for (var r0=0; r0<5; r0++) place(r0, [draw(), draw(), draw()], false);
+  paint();
+})();
+</script>
+
+</body>
+</html>
