@@ -4,6 +4,8 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const PUBLIC_DIR = path.join(__dirname, '../public'); // разрешаем один раз здесь
+
 const route = [
     'index',
     'about',
@@ -13,11 +15,11 @@ const route = [
 
 export const router = {
     route: (name, res) => {
-        if(route.includes(name)){
-            res.sendFile(`../public/${name}.html`, { root: __dirname });
+        if (route.includes(name)) {
+            res.sendFile(`${name}.html`, { root: PUBLIC_DIR });
         }
         else {
-            res.sendFile('../public/index.html', { root: __dirname });
+            res.sendFile('index.html', { root: PUBLIC_DIR });
         }
     }
 }
