@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "geoip-lite": "^2.0.3",
+    "read-tls-client-hello": "^2.0.0",
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1",
     "ua-parser-js": "^2.0.10"

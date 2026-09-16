@@ -8,33 +8,6 @@ export const User = sequelize.define("user", {
     User_Agent: {
         type: DataTypes.STRING
     },
-    Browser: {
-        type: DataTypes.STRING
-    },
-    Browser_Version: {
-        type: DataTypes.STRING
-    },
-    Device: {
-        type: DataTypes.STRING
-    },
-    Device_Model: {
-        type: DataTypes.STRING
-    },
-    OS: {
-        type: DataTypes.STRING
-    },
-    OS_Version: {
-        type: DataTypes.STRING
-    },
-    Engine: {
-        type: DataTypes.STRING,
-    },
-    Engine_Version: {
-        type: DataTypes.STRING,
-    },
-    CPU: {
-        type: DataTypes.STRING,
-    },
     isAIAssistant: {
         type: DataTypes.BOOLEAN
     },
@@ -55,9 +28,6 @@ export const User = sequelize.define("user", {
     isDatacenterIP: {
         type: DataTypes.BOOLEAN,
         defaultValue: null,
-    },
-    ASN_Org: {
-        type: DataTypes.STRING,
     },
     Country: {
         type: DataTypes.STRING,
