@@ -5,6 +5,9 @@ export const User = sequelize.define("user", {
     IP: {
         type: DataTypes.STRING,
     },
+    ASN: {
+        type: DataTypes.STRING,
+    },
     User_Agent: {
         type: DataTypes.STRING
     },
@@ -17,23 +20,25 @@ export const User = sequelize.define("user", {
     isBot: {
         type: DataTypes.BOOLEAN
     },
-    isVPN: {
+    VPN: {
         type: DataTypes.BOOLEAN,
         defaultValue: null,
     },
-    isTor: {
+    Proxy: {
         type: DataTypes.BOOLEAN,
+        defaultValue: null,
+    },
+    Tor: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: null,
+    },
+    Operator: {
+        type: DataTypes.STRING,
         defaultValue: null,
     },
     isDatacenterIP: {
         type: DataTypes.BOOLEAN,
         defaultValue: null,
-    },
-    Country: {
-        type: DataTypes.STRING,
-    },
-    City: {
-        type: DataTypes.STRING,
     },
     createdAt: {
         type: DataTypes.DATE

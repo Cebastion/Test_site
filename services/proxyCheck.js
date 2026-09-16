@@ -12,9 +12,18 @@ export const checkDatacenterIP = (ip) => {
 
 export const checkVPN = async (ip) => {
     try {
-        const res = await fetch(`https://proxycheck.io/v2/${ip}?vpn=1&asn=1`);
+        const res = await fetch(`https://proxycheck.io/v3/${ip}`);
         const json = await res.json();
-        return json[ip] || {};
+
+        const cooked_data = {
+            asn:  json.network.asn,
+            proxy: json.detections.proxy,
+            vpn:  json.detections.vpn,
+            tor: json.detections.tor,
+            operator: json.operator,
+        }
+
+        return cooked_data || {};
     } catch {
         return {};
     }
